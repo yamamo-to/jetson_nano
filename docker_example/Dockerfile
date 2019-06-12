@@ -1,0 +1,28 @@
+FROM ubuntu:18.04
+
+ARG MIRROR=ports.ubuntu.com
+
+# for Tensorflow
+RUN set -x \
+ && sed -i.org -e "s|ports.ubuntu.com|$MIRROR|g" /etc/apt/sources.list \
+ && apt update && apt install -y \
+    pkg-config \
+    bash python3-pip libhdf5-serial-dev hdf5-tools zlib1g-dev zip libjpeg8-dev libhdf5-dev \
+ && pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py astor termcolor \
+ && pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu \
+ && rm -rf /var/lib/apt/lists/*
+
+ENV LD_LIBRARY_PATH /usr/local/cuda-10.0/targets/aarch64-linux/lib:/usr/lib/aarch64-linux-gnu/tegra
+
+# create a user
+ARG USER=foo
+
+RUN useradd $USER \
+ && mkdir -p /home/$USER \
+ && chown -R foo:foo /home/$USER
+
+ENV HOME /home/$USER
+USER $USER
+WORKDIR /home/$USER
+
+CMD ["/bin/bash"]
