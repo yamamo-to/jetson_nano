@@ -32,4 +32,4 @@ docker run -it --rm \
  --device=/dev/nvhost-vic \
  --device=/dev/nvidiactl \
  --device=/dev/nvmap \
- python3_with_tensorflow /bin/bash
+ python_with_tensorflow /bin/bash
