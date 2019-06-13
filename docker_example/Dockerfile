@@ -13,11 +13,15 @@ RUN set -x \
  && rm -rf /var/lib/apt/lists/*
 
 ENV LD_LIBRARY_PATH /usr/local/cuda-10.0/targets/aarch64-linux/lib:/usr/lib/aarch64-linux-gnu/tegra
+ENV CUDA_PATH /usr/local/cuda-10.0
 
 # create a user
 ARG USER=foo
+ARG UID=1000
+ARG GID=1000
 
-RUN useradd $USER \
+RUN groupadd -g $GID $USER \
+ && useradd -u $UID -g $GID -G video $USER \
  && mkdir -p /home/$USER \
  && chown -R foo:foo /home/$USER
 

@@ -44,7 +44,6 @@ cd jetson_nano/docker_example
 First, install pillow as below:
 
 ```bash:container
-cd
 pip3 install pillow
 ```
 
