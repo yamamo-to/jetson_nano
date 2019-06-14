@@ -8,10 +8,14 @@ RUN set -x \
  && apt update && apt install -y \
     pkg-config \
     bash python3-pip libhdf5-serial-dev hdf5-tools zlib1g-dev zip libjpeg8-dev libhdf5-dev \
- && pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py astor termcolor \
- && pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu \
+ && pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py astor termcolor
+
+# split image due to too long compilation time
+RUN pip3 install -U keras-preprocessing keras-applications protobuf tensorboard tensorflow-estimator \
+ && pip3 install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu==1.13.1+nv19.5 \
  && rm -rf /var/lib/apt/lists/*
 
+# set environment variable
 ENV LD_LIBRARY_PATH /usr/local/cuda-10.0/targets/aarch64-linux/lib:/usr/lib/aarch64-linux-gnu/tegra
 ENV CUDA_PATH /usr/local/cuda-10.0
 
