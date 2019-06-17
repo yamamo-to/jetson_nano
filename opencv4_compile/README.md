@@ -15,7 +15,7 @@ This example is tested on Jetson Nano with JetPack 4.2.
 
 - Model: Jetson Nano
 - Environment: JetPack 4.2
-- Storage: at least 15GB of disk space
+- Storage: at least 10GB of disk space
 
 ## Download example from github
 
@@ -38,13 +38,39 @@ cd jetson_nano/opencv4_compile
 
 ## Run build script
 
+Notice: The following command took three hours in my environment.
+
 ```bash:container
 ./build_opencv4.sh
 ```
 
+You can find out binaries in the following directory:
+`/opt/opencv-4.1.0`.
+
 ## Export outside container
 
-You can find out binaries in the following directories:
+After executing the build script `build_opencv4.sh`, the file `/home/foo/opencv-4.1.0.sfs`
+is created in the container. Outside condainer, the path is
+`jetson_nano/opencv4_compile/home/opencv-4.1.0.sfs`.
 
-- home/dist
-- home/build
+This is a SquashFS compressed file, and you can use this file as below:
+
+```bash:container
+sudo mkdir /opt/opencv-4.1.0
+sudo mount -o loop /path/to/opencv-4.1.0.sfs /opt/opencv-4.1.0
+```
+
+And set the environment variables:
+
+```bash:container
+export PYTHONPATH=/opt/opencv-4.1.0/lib/python3.6/dist-packages:$PYTHONPATH
+export LD_LIBRARY_PATH=/opt/opencv-4.1.0/lib:$LD_LIBRARY_PATH
+```
+
+Finally, install dependent packages:
+
+```bash:container
+sudo apt install cuda-cublas-10-0 cuda-cufft-10-0 cuda-npp-10-0 \
+libavcodec57 libavformat57 libdc1394-22 libglib2.0-dev \
+libgstreamer-plugins-base1.0-0 libgtk2.0-0 libhdf5-100 libjpeg-turbo8 libswscale4
+```

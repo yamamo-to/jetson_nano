@@ -47,6 +47,7 @@ RUN set -x \
     hdf5-tools \
     libhdf5-dev \
     unzip \
+    squashfs-tools \
  && mkdir /usr/local/cuda-10.0 \
  && rm -rf /var/lib/apt/lists/* \
  && groupadd -g $GID $USER \

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+TARGET_DIR=/opt/opencv-4.1.0/
+
 mkdir build
 cd build
 curl -L https://github.com/opencv/opencv/archive/4.1.0.zip -o opencv-4.1.0.zip 
@@ -24,9 +26,9 @@ cmake \
   -D BUILD_PERF_TESTS=OFF \
   -D BUILD_EXAMPLES=OFF \
   -D CMAKE_BUILD_TYPE=RELEASE \
-  -D CMAKE_INSTALL_PREFIX=/usr/local \
+  -D CMAKE_INSTALL_PREFIX=$TARGET_DIR \
   ..
 
 make -j4
 sudo make install
-make install DESTDIR=$HOME/dist
+mksquashfs $TARGET_DIR $HOME/opencv-4.1.0.sfs -b 1048576 -comp xz -Xdict-size 100%
