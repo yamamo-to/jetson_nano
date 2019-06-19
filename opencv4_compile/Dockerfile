@@ -41,8 +41,10 @@ RUN set -x \
     curl \
     libopenblas-dev \
     libopenblas-base \
-    liblapack-dev \
+    libatlas-base-dev \
+    liblapacke-dev \
     libeigen3-dev \
+    libavresample-dev \
     libhdf5-serial-dev \
     hdf5-tools \
     libhdf5-dev \

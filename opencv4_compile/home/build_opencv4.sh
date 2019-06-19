@@ -20,6 +20,7 @@ cmake \
   -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.1.0/modules \
   -D WITH_GSTREAMER=ON \
   -D WITH_LIBV4L=ON \
+  -D WITH_LAPACK=ON \
   -D BUILD_opencv_python2=ON \
   -D BUILD_opencv_python3=ON \
   -D BUILD_TESTS=OFF \
