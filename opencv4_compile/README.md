@@ -70,7 +70,5 @@ export LD_LIBRARY_PATH=/opt/opencv-4.1.0/lib:$LD_LIBRARY_PATH
 Finally, install dependent packages:
 
 ```bash:container
-sudo apt install cuda-cublas-10-0 cuda-cufft-10-0 cuda-npp-10-0 \
-libavcodec57 libavformat57 libdc1394-22 libglib2.0-dev \
-libgstreamer-plugins-base1.0-0 libgtk2.0-0 libhdf5-100 libjpeg-turbo8 libswscale4
+sudo apt install libatlas3-base libhdf5-100
 ```
