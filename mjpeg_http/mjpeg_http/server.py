@@ -32,13 +32,13 @@ class CameraHandler(BaseHTTPRequestHandler):
                 self.send_header('Content-length', str(jpg.nbytes))
                 self.end_headers()
                 self.wfile.write(jpg)
-            logger.info('thread is stopping ...')
         else:
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             with open(self.document_root + '/index.html', 'r') as f:
                 self.wfile.write(f.read().encode())
+        logger.info('thread is stopping ... [{path}]'.format(path=self.path))
 
 
 class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
