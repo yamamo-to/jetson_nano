@@ -80,7 +80,7 @@ def main():
     except KeyboardInterrupt:
         logger.info("server is stopping ...")
         camera.release()
-        server.socket.close()
+        server.shutdown()
 
 
 if __name__ == '__main__':
