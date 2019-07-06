@@ -14,13 +14,9 @@ class Singleton(type):
 
 
 class Camera(metaclass=Singleton):
-    def __init__(self):
+    def __init__(self, source, width, height):
         self._read_lock = Lock()
-
-    def set_source(self, source):
         self.cap = cv2.VideoCapture(source)
-
-    def set_size(self, width, height):
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 

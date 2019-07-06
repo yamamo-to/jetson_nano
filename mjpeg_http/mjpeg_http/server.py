@@ -32,7 +32,7 @@ class CameraHandler(BaseHTTPRequestHandler):
                 self.send_header('Content-length', str(jpg.nbytes))
                 self.end_headers()
                 self.wfile.write(jpg)
-            logger.info('Thread is stopping ...')
+            logger.info('thread is stopping ...')
         else:
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
@@ -62,11 +62,10 @@ def main():
     parser.add_argument('--width', type=int, default=320)
     parser.add_argument('--height', type=int, default=240)
     parser.add_argument('--directory', type=str, default='html')
+    parser.add_argument('--device-index', type=int, default=0)
     args = parser.parse_args()
 
-    camera = Camera()
-    camera.set_source(0)
-    camera.set_size(args.width, args.height)
+    camera = Camera(args.device_index, args.width, args.height)
     try:
         server = ThreadedHTTPServer((args.bind, args.port), CameraHandler)
         server.set_camera(camera)
