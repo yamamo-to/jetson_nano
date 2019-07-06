@@ -6,7 +6,8 @@ from socketserver import ThreadingMixIn
 from .camera import Camera
 from .log import logger
 
-URL_PATH = '/camera.mjpg'
+URL_PATH_MJPG = '/camera.mjpg'
+URL_PATH_FAVICON = '/favicon.ico'
 SLEEP_IN_SEC = 0.050
 
 
@@ -17,7 +18,7 @@ class CameraHandler(BaseHTTPRequestHandler):
         super(CameraHandler, self).__init__(request, client_address, server)
 
     def do_GET(self):
-        if self.path == URL_PATH:
+        if self.path == URL_PATH_MJPG:
             self.send_response(200)
             self.send_header(
                 'Content-type',
@@ -32,6 +33,10 @@ class CameraHandler(BaseHTTPRequestHandler):
                 self.send_header('Content-length', str(jpg.nbytes))
                 self.end_headers()
                 self.wfile.write(jpg)
+        elif self.path == URL_PATH_FAVICON:
+            self.send_response(404)
+            self.end_headers()
+            self.wfile.write('favicon is not found'.encode())
         else:
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
