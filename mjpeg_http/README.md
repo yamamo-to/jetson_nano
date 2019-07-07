@@ -1,13 +1,20 @@
-# Motion JPEG example on Jetson Nano
+# Motion JPEG streaming demo on Jetson Nano
 
 ## What is this ?
 
-This is a motion JPEG streaming example via http on Jetson Nano.
+This is a motion JPEG streaming demo via http on Jetson Nano.
 
 ## Prerequisties
 
 - Model: Jetson Nano
 - Environment: JetPack 4.2
+
+## Install python package
+
+```bash:terminal
+sudo apt install python3-pip
+pip3 install numpy --user
+```
 
 ## Download example from github
 
