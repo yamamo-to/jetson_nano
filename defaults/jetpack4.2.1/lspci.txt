@@ -1,0 +1,2 @@
+00:02.0 PCI bridge: NVIDIA Corporation Device 0faf (rev a1)
+01:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 15)
