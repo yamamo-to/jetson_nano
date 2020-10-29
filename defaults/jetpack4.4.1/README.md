@@ -2,7 +2,7 @@
 
 ## What is this ?
 
-This is default settings just after installing JetPack 4.2.1 for Jetson Nano.
+This is default settings just after installing JetPack 4.4.1 for Jetson Nano.
 The filename is `jetson-nano-4gb-jp441-sd-card-image.zip`.
 
 | filename    | command           |
