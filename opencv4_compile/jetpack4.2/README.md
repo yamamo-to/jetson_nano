@@ -26,7 +26,7 @@ git clone https://github.com/yamamo-to/jetson_nano.git
 ## Build Docker Image
 
 ```bash:terminal
-cd jetson_nano/opencv4_compile
+cd jetson_nano/opencv4_compile/jetpack4.2
 ./build_docker_image.sh
 ```
 
