@@ -29,7 +29,7 @@ git clone https://github.com/yamamo-to/jetson_nano.git
 Note that this build takes time. In my environment it takes about an hour.
 
 ```bash:terminal
-cd jetson_nano/docker_example
+cd jetson_nano/docker_example/jetpack4.2
 ./build.sh
 ```
 
