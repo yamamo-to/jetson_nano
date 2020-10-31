@@ -1,4 +1,4 @@
-# OpenCV 4.1.0 Compile demo on Jetson Nano
+# OpenCV 4.5.0 Compile demo on Jetson Nano
 
 ## What is this ?
 
@@ -49,7 +49,7 @@ You can find out binaries in the following directory:
 
 ## Export outside container
 
-After executing the build script `build_opencv4.sh`, the file `/home/foo/opencv-4.1.0.sfs`
+After executing the build script `build_opencv4.sh`, the file `/home/foo/opencv-4.5.0.sfs`
 is created in the container. Outside condainer, the path is
 `jetson_nano/opencv4_compile/home/opencv-4.5.0.sfs`.
 
@@ -64,9 +64,11 @@ And set the environment variables:
 
 ```bash:terminal
 export PYTHONPATH=/opt/opencv-4.5.0/lib/python3.6/dist-packages:$PYTHONPATH
-export LD_LIBRARY_PATH=/opt/opencv-4.5.0/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/opencv-4.5.0/lib:/opt/opencv-4.5.0/lib/aarch64-linux-gnu:$LD_LIBRARY_PATH
 ```
 
+Finally, check the cv2 version and path:
+
 ```bash:terminal
-python3 -c 'import cv2; print(cv2.__file__)'
+python3 -c 'import cv2; print(cv2.__version__); print(cv2.__file__)'
 ```
