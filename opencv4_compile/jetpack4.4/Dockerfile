@@ -78,16 +78,10 @@ RUN set -x \
     libx264-dev \
     libxvidcore-dev \
     libv4l-dev \
-    v4l-utils \
-    v4l2ucp \
-    qv4l2 \
-    libxine2-dev \
 # Parallel framework:
     libtbb-dev \
 # Other third-party libraries:
     libatlas-base-dev \
-    libblas-dev \
-    libopenblas-base \
     libopenblas-dev \
     libeigen3-dev \
     liblapacke-dev \
@@ -97,10 +91,6 @@ RUN set -x \
 # Python 3:
     python3-numpy \
     python3.6-dev \
-# Others:
-    libgpm2 \
-    libprotobuf-dev \
-    protobuf-compiler \
  && mkdir /usr/local/cuda-10.2 \
  && rm -rf /var/lib/apt/lists/* \
  && groupadd -g $GID $USER \

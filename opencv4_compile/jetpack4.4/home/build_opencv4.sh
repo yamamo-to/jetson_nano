@@ -25,18 +25,20 @@ cd opencv-${VERSION}
 mkdir release
 cd release 
 cmake \
+  -D CMAKE_BUILD_TYPE=RELEASE \
+  -D CMAKE_INSTALL_PREFIX=$TARGET_DIR \
+  -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-${VERSION}/modules \
   -D WITH_CUDA=ON \
   -D CUDA_ARCH_BIN="5.3" \
   -D CUDA_ARCH_PTX="" \
-  -D WITH_CUBLAS=ON \
   -D ENABLE_FAST_MATH=ON \
   -D CUDA_FAST_MATH=ON \
+  -D WITH_CUBLAS=ON \
   -D OPENCV_DNN_CUDA=ON \
   -D WITH_CUDNN=ON \
   -D CUDNN_LIBRARY=/usr/lib/aarch64-linux-gnu/libcudnn.so.8.0.0 \
   -D CUDNN_INCLUDE_DIR=/usr/include \
   -D OPENCV_ENABLE_NONFREE=ON \
-  -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-${VERSION}/modules \
   -D WITH_GSTREAMER=ON \
   -D WITH_LIBV4L=ON \
   -D WITH_LAPACK=ON \
@@ -45,8 +47,6 @@ cmake \
   -D BUILD_TESTS=OFF \
   -D BUILD_PERF_TESTS=OFF \
   -D BUILD_EXAMPLES=OFF \
-  -D CMAKE_BUILD_TYPE=RELEASE \
-  -D CMAKE_INSTALL_PREFIX=$TARGET_DIR \
   -D WITH_TBB=ON \
   -D WITH_V4L=ON \
   -D WITH_OPENGL=ON \
