@@ -55,7 +55,6 @@ RUN set -x \
     libice-dev \
     libx11-dev \
     libxext-dev \
-    qv4l2 \
 # Media I/O:
     libjpeg-dev \
     libpng-dev \
@@ -81,6 +80,7 @@ RUN set -x \
     libv4l-dev \
     v4l-utils \
     v4l2ucp \
+    qv4l2 \
     libxine2-dev \
 # Parallel framework:
     libtbb-dev \
