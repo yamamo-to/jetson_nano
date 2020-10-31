@@ -1,4 +1,4 @@
-# OpenCV 4.1.0 Compile demo on Jetson Nano
+# OpenCV 4.5.0 Compile demo on Jetson Nano
 
 ## What is this ?
 
@@ -49,7 +49,7 @@ You can find out binaries in the following directory:
 
 ## Export outside container
 
-After executing the build script `build_opencv4.sh`, the file `/home/foo/opencv-4.1.0.sfs`
+After executing the build script `build_opencv4.sh`, the file `/home/foo/opencv-4.5.0.sfs`
 is created in the container. Outside condainer, the path is
 `jetson_nano/opencv4_compile/home/opencv-4.5.0.sfs`.
 
