@@ -1,0 +1,11 @@
+Package: synergy
+Version: 1.12.0-1
+Architecture: arm64
+Maintainer: Symless <engineering@symless.com>
+Depends: libavahi-compat-libdnssd1 (>= 0.7-3.1), libqt5widgets5 (>= 5.9.5), x11-utils (>= 7.7)
+Section: utils
+Priority: optional
+Homepage: https://symless.com/synergy
+Description: Keyboard and mouse sharing solution
+ Synergy allows you to share one mouse and keyboard between multiple computers.
+ Work seamlessly across Windows, macOS and Linux.
