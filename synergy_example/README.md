@@ -40,8 +40,8 @@ cd jetson_nano/synergy
 ## Install debian package
 
 ```bash:terminal
-sudo apt install libavahi-compat-libdnssd1
-sudo dpkg -i home/synergy-1.12.0-1_arm64.deb
+sudo apt update
+sudo apt install ./home/synergy-1.12.0-1_arm64.deb
 ```
 ## Uninstall debian package
 
