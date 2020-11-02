@@ -46,7 +46,7 @@ sudo apt install ./home/synergy-1.12.0-1_arm64.deb
 ## Uninstall debian package
 
 ```bash:terminal
-sudo dpkg -r synergy
+sudo apt remove synergy
 ```
 
 ## See also
