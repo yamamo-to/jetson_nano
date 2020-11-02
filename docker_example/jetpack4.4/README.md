@@ -7,7 +7,7 @@ This example is tested on Jetson Nano with JetPack 4.2.
 
 - Dockerfile ... Dockerfile to create an image including TensorFlow
 - build.sh   ... build script to make Docker image
-- run.sh     ... exsample to launch container
+- run.sh     ... example to launch container
 - home/      ... home directory mounted to /home/foo in the container
 
 This example demonstrates an image recognition by Resnet50.
