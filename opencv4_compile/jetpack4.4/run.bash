@@ -24,6 +24,16 @@ do
 	vs+=" -v ${file}:${file}"
 done
 
+for file in /usr/lib/aarch64-linux-gnu/lapack/*
+do
+	vs+=" -v ${file}:${file}"
+done
+
+for file in /usr/lib/aarch64-linux-gnu/blas/*
+do
+	vs+=" -v ${file}:${file}"
+done
+
 docker run -it --rm \
  -v $PWD/home:/home/$DOCKER_USER \
  -v /usr/local/cuda-10.2:/usr/local/cuda-10.2 \

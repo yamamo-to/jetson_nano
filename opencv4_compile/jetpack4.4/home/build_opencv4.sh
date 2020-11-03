@@ -1,7 +1,7 @@
 #!/bin/sh
 
 VERSION=4.5.0
-TARGET_DIR=/opt/opencv-${VERSION}/
+OPENCV4_DIR=/opt/opencv-${VERSION}
 
 export LD_LIBRARY_PATH=/usr/lib/aarch64-linux-gnu/tegra:/usr/lib/aarch64-linux-gnu/tegra-egl:$LD_LIBRARY_PATH
 
@@ -22,11 +22,13 @@ if [ ! -f opencv_contrib-${VERSION}.zip ]; then
 fi
 
 cd opencv-${VERSION}
-mkdir release
+if [ ! -d release ]; then
+  mkdir release
+fi
 cd release 
 cmake \
   -D CMAKE_BUILD_TYPE=RELEASE \
-  -D CMAKE_INSTALL_PREFIX=$TARGET_DIR \
+  -D CMAKE_INSTALL_PREFIX=$OPENCV4_DIR \
   -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-${VERSION}/modules \
   -D WITH_CUDA=ON \
   -D CUDA_ARCH_BIN="5.3" \
@@ -59,8 +61,10 @@ cmake \
 make -j$(nproc)
 sudo make install
 
-libdir=$TARGET_DIR/lib/aarch64-linux-gnu
-sudo mkdir $libdir
+libdir=$OPENCV4_DIR/lib/aarch64-linux-gnu
+if [ ! -d $libdir ]; then
+  sudo mkdir $libdir
+fi
 for lib in \
   cblas atlas hdf5 glog sz Qt5OpenGL Qt5Test aec gflags cholmod cxsparse spqr tesseract \
   amd camd ccolamd dap dapclient epsilon f77blas freexl fyba geos_c geotiff \
@@ -75,4 +79,17 @@ do
   sudo cp -p --preserve=links /usr/lib/lib$lib.* $libdir/
 done
 
-mksquashfs $TARGET_DIR $HOME/opencv-${VERSION}.sfs -b 1048576 -comp xz -Xdict-size 100%
+# lapack and blas
+for target in lapack blas;
+do
+  sudo cp -p --preserve=links /usr/lib/aarch64-linux-gnu/$target/lib* $libdir/
+done
+
+# make utililty for convenience
+if [ ! -d $OPENCV4_DIR/etc ]; then
+  sudo mkdir $OPENCV4_DIR/etc
+fi
+
+sudo cp $HOME/env.sh $OPENCV4_DIR/etc/env.sh
+
+mksquashfs $OPENCV4_DIR $HOME/opencv-${VERSION}.sfs -b 1048576 -comp xz -Xdict-size 100%
