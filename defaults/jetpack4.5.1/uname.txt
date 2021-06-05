@@ -1,0 +1,1 @@
+Linux yamamoto-desktop 4.9.201-tegra #1 SMP PREEMPT Fri Feb 19 08:40:32 PST 2021 aarch64 aarch64 aarch64 GNU/Linux
